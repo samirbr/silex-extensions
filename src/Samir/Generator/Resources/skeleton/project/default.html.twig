@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Samuca Fashion</title>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="{% block description %}{% endblock %}">
+	<meta name="author" content="{% block author %}{% endblock %}">
+	
+	<link rel="shortcut icon" href="/assets/ico/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+	
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/assets/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="/assets/css/theme.css">	
+	
+	<link rel="author" href="/assets/humans.txt" />
+	
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	{% block stylesheets %}{% endblock %}
+</head>
+<body>
+	<header>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					
+					<a class="brand" href="/">Samuca Fashion</a>
+					
+					<div class="nav-collapse">
+            {% if use_authentication is not defined or is_granted('ROLE_ADMIN') %}
+              <ul class="nav">            
+              {% if menu is defined and menu|length %}
+                {% for entity in menu %}
+                  <li>
+                    <a href="{{ entity.path }}">{{ entity.name|trans }}</a>
+                  </li>
+                {% endfor %}
+              {% endif %}
+              </ul>
+              {% if use_authentication is defined and use_authentication %}
+              <ul class="nav pull-right">
+                <li>
+                  <p><a class="btn btn-small" href="{{ path('logout') }}">{{ 'Log out'|trans }}</a></p>
+                </li:
+              </ul>
+              {% endif %}
+            {% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="logo pull-right container-fluid">
+			<a href="javascript:void(0);"><img src="/assets/img/project-logo.png"></a>
+		</div>
+	</header>
+	
+	<div class="container-fluid">
+		{% block content %}{% endblock %}
+	</div>
+	
+	<footer class="container-fluid pull-right"">
+		<a href="javascript:void(0);"><img src="/assets/img/vendor-logo.png"></a>
+		<p>&copy; Samuca 2013</p>
+	</footer>
+	
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/bootstrap.min.js"></script>
+	
+  {% block javascripts %}{% endblock %}
+	
+</body>
+</html>

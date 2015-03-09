@@ -1,0 +1,7 @@
+{{ namespace }}\Controller\{{ class_name }}Controller:
+{% for route in routes %}
+  {{ route.name_prefix }}:
+    pattern:  {{ route.pattern }}
+    method:   {{ route.method }}
+    action:   {{ route.action }}
+{% endfor %}

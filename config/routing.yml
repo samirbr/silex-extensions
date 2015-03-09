@@ -1,0 +1,80 @@
+Samuca\Fashion\Controller\FileSystemController:
+  command: { pattern: '/filesystem/{command}', method: POST, action: commandAction }
+  filesystem: { pattern: /filesystem, method: GET, action: indexAction }
+
+Samuca\Fashion\Controller\DefaultController:
+    home: { pattern: /, method: GET, action: indexAction }
+    list:
+      pattern: '/list/{param1}/{param2}'
+      method: MATCH
+      action: listAction
+      defaults: { param1: NULL, param2: NULL }
+    show: { pattern: '/show/{id}/{name}', method: GET, action: showAction }
+    upload: { pattern: /upload, method: MATCH, action: uploadAction }
+    
+Samuca\Fashion\Controller\AddressController:
+    address: { pattern: /address/, method: get, action: indexAction }
+    address_show: { pattern: '/address/{id}/show', method: get, action: showAction }
+    address_new: { pattern: /address/new, method: get, action: newAction }
+    address_create: { pattern: /address/create, method: post, action: createAction }
+    address_edit: { pattern: '/address/{id}/edit', method: get, action: editAction }
+    address_update: { pattern: '/address/{id}/update', method: post, action: updateAction }
+    address_delete: { pattern: '/address/{id}/delete', method: post, action: deleteAction }
+    
+Samuca\Fashion\Controller\NetworkController:
+    network: { pattern: /network/, method: get, action: indexAction }
+    network_show: { pattern: '/network/{id}/show', method: get, action: showAction }
+    network_new: { pattern: /network/new, method: get, action: newAction }
+    network_create: { pattern: /network/create, method: post, action: createAction }
+    network_edit: { pattern: '/network/{id}/edit', method: get, action: editAction }
+    network_update: { pattern: '/network/{id}/update', method: post, action: updateAction }
+    network_delete: { pattern: '/network/{id}/delete', method: post, action: deleteAction }
+    
+Samuca\Fashion\Controller\BrandController:
+    brand: { pattern: /brand/, method: get, action: gridAction }
+    #brand: { pattern: /brand/, method: get, action: indexAction }
+    brand_show: { pattern: '/brand/{id}/show', method: get, action: showAction }
+    brand_new: { pattern: /brand/new, method: get, action: newAction }
+    brand_create: { pattern: /brand/create, method: post, action: createAction }
+    brand_edit: { pattern: '/brand/{id}/edit', method: get, action: editAction }
+    brand_update: { pattern: '/brand/{id}/update', method: post, action: updateAction }
+    brand_delete: { pattern: '/brand/{id}/delete', method: post, action: deleteAction }
+    
+Samuca\Fashion\Controller\MediaController:
+    media:  { pattern: /media, method: get, action: gridAction }
+    #media: { pattern: /media/, method: get, action: indexAction }
+    media_upload: { pattern: '/media/upload', method: post, action: uploadAction }
+    media_show: { pattern: '/media/{id}/show', method: get, action: showAction }
+    media_new: { pattern: /media/new, method: get, action: newAction }
+    media_create: { pattern: /media/create, method: post, action: createAction }
+    media_edit: { pattern: '/media/{id}/edit', method: get, action: editAction }
+    media_update: { pattern: '/media/{id}/update', method: post, action: updateAction }
+    media_delete: { pattern: '/media/{id}/delete', method: post, action: deleteAction }
+    media_bulk: { pattern: '/media/bulk', method: post, action: bulkAction }
+
+Samuca\Fashion\Controller\SegmentController:
+    segment: { pattern: /segment/, method: get, action: indexAction }
+    segment_show: { pattern: '/segment/{id}/show', method: get, action: showAction }
+    segment_new: { pattern: /segment/new, method: get, action: newAction }
+    segment_create: { pattern: /segment/create, method: post, action: createAction }
+    segment_edit: { pattern: '/segment/{id}/edit', method: get, action: editAction }
+    segment_update: { pattern: '/segment/{id}/update', method: post, action: updateAction }
+    segment_delete: { pattern: '/segment/{id}/delete', method: post, action: deleteAction }
+    
+Samuca\Fashion\Controller\RegionController:
+    region: { pattern: /region/, method: get, action: indexAction }
+    region_show: { pattern: '/region/{id}/show', method: get, action: showAction }
+    region_new: { pattern: /region/new, method: get, action: newAction }
+    region_create: { pattern: /region/create, method: post, action: createAction }
+    region_edit: { pattern: '/region/{id}/edit', method: get, action: editAction }
+    region_update: { pattern: '/region/{id}/update', method: post, action: updateAction }
+    region_delete: { pattern: '/region/{id}/delete', method: post, action: deleteAction }
+
+Samuca\Fashion\Controller\PosterController:
+    poster: { pattern: /poster, method: get, action: gridAction }
+    poster_show: { pattern: '/poster/{id}/show', method: get, action: showAction }
+    poster_new: { pattern: /poster/new, method: get, action: newAction }
+    poster_create: { pattern: /poster/create, method: post, action: createAction }
+    poster_edit: { pattern: '/poster/{id}/edit', method: get, action: editAction }
+    poster_update: { pattern: '/poster/{id}/update', method: post, action: updateAction }
+    poster_delete: { pattern: '/poster/{id}/delete', method: post, action: deleteAction }

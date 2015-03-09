@@ -1,0 +1,88 @@
+Samir\Provider\ConstantsBagServiceProvider:
+  const.pagination: 12
+
+Silex\Provider\DoctrineServiceProvider:
+  db.options:
+    driver:   pdo_mysql
+    host:     192.168.137.168 
+    dbname:   fashiondb
+    user:     fashiondb
+    password: fashiondb
+
+Nutwerk\Provider\DoctrineORMServiceProvider:
+  db.orm.proxies_dir:             '%root_dir%/cache/doctrine/proxy'
+  db.orm.proxies_namespace:       Doctrine\ORM\Proxy\Proxy
+  #db.orm.cache: 
+  db.orm.auto_generate_proxies:   true
+  db.orm.entities: 
+    - { type: annotation, path: '%root_dir%/src/Samuca/Fashion/Entity', namespace: Samuca\Fashion\Entity }
+      
+Silex\Provider\ServiceControllerServiceProvider: ~
+Silex\Provider\UrlGeneratorServiceProvider: ~
+Silex\Provider\SessionServiceProvider: ~
+Neutron\Silex\Provider\FilesystemServiceProvider: ~
+
+Samir\Provider\FormServiceProvider: 
+  form.types:
+    - 'Samir\Form\Type\BootstrapFileType'
+  form.templates:
+    - fields.html.twig
+
+Samir\Provider\SecurityServiceProvider:
+  security.firewalls:
+    list:               { pattern: ^/list }
+    show:               { pattern: ^/show }
+    upload:             { pattern: ^/upload }
+    default: 
+      pattern:          ^.*$
+      anonymous:        true
+      form:
+        login_path:     /
+        check_path:     login_check
+      logout: 
+        logout_path:    /logout
+      users:            'Samir\Provider\UserProvider'
+  security.access_rules:
+    - [ ^/.+$, ROLE_ADMIN ]
+    - [ ^/list, '' ]
+
+Samir\Provider\TranslationServiceProvider:
+  locale_fallback:      pt_BR
+  translator.format:    xliff
+  translator.domains:
+    messages:
+      pt_BR:            '%root_dir%/src/Samuca/Fashion/Resources/translations/messages.pt_BR.xlf'
+
+Samir\Provider\TwigServiceProvider:
+  twig.path:        
+    - '%root_dir%/src/Samuca/Fashion/Resources/views'
+  twig.class_path:  '%root_dir%/vendor/twig/twig/lib'  
+  twig.options:
+    cache:          '%root_dir%/cache'
+    debug:          true
+  twig.globals:
+    menu:  
+      - { name: Brand, path: /brand }
+      - { name: Media, path: /media }
+      - { name: Region, path: /region }
+      - { name: Segment, path: /segment }
+      - { name: Poster, path: /poster }
+    use_authentication: true
+    filesystem:
+      title: 'FILESYSTEM'
+      author: ''
+      description: ''
+      keywords: ''      
+    backend: 
+      title: 'COMPRAS BH'
+      author: ''
+      description: ''
+      keywords: ''
+      footer: 'Fashionistando 2013'
+    frontend: 
+      title: 'COMPRAS BH'
+      author: ''
+      description: ''
+      keywords: ''
+      
+Samir\Provider\KitPagesGridServiceProvider: ~

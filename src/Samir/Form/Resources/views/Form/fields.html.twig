@@ -1,0 +1,27 @@
+{% block bootstrap_file_widget %}
+    {% spaceless %}
+    <div class="fileupload fileupload-{{ data is not empty ? 'exists' : 'new' }}" data-provides="fileupload">
+      <div class="input-append">
+        <div class="uneditable-input span3">
+          <i class="icon-file fileupload-exists"></i> 
+          <span class="fileupload-preview">{{ data is not empty ? data : '' }}</span>          
+        </div>        
+        <span class="btn btn-file">
+          <input type="hidden" {{ block('widget_attributes') }} role="file" {% for key,value in defaults %}data-{{ key }}="{{ value }}"{% endfor %} value="{{ data is not empty ? data : '' }}">
+          <span class="fileupload-new">{{ "Select file"|trans }}</span>
+          <span class="fileupload-exists">{{ "Change"|trans }}</span>
+          <input type="file" name="file">
+        </span>
+        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">{{ "Remove"|trans }}</a>
+      </div>
+      
+      <div id="progress" class="progress">
+        <div class="bar" style="width: 0%;">0%</div>
+      </div>
+      
+      <br>
+      <img class="fileupload fileupload-thumb img-polaroid {{ data is empty ? 'hide' : '' }}" src="{{ data is not empty ? '/uploads/thumbs/' ~ data : '' }}">
+    </div>
+    {% endspaceless %}
+{% endblock %}
+
